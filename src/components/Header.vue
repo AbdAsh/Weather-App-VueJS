@@ -12,9 +12,14 @@
           type="text"
           placeholder="Enter a city"
           v-model="search"
-          @input="changeSearch"
+          @keypress.enter="searchWeather"
         />
-        <img class="search-icon" src="../assets/search.png" alt="Search" />
+        <img
+          class="search-icon"
+          src="../assets/search.png"
+          alt="Search"
+          @click.prevent="searchWeather"
+        />
       </div>
     </div>
   </header>
@@ -29,7 +34,7 @@ export default {
     };
   },
   methods: {
-    changeSearch() {
+    searchWeather() {
       this.$store.dispatch("setSearch", this.search);
     },
   },
@@ -72,11 +77,13 @@ export default {
       background-color: #fff;
       color: #2c3e50;
       font-size: 1.2rem;
+      outline: none;
     }
     img {
       width: 20px;
       height: 20px;
       margin-left: 10px;
+      cursor: pointer;
     }
   }
 }
