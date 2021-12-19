@@ -1,13 +1,12 @@
 <template>
   <div class="container">
     <div class="tabs-container">
-      <div class="arrow-container" :class="selected < 1 ? 'disabled' : ''">
-        <img
-          class="flipped"
-          src="../assets/next.png"
-          alt="Left"
-          @click.prevent="prevDay"
-        />
+      <div
+        class="arrow-container"
+        :class="selected < 1 ? 'disabled' : ''"
+        @click.prevent="prevDay"
+      >
+        <img class="flipped" src="../assets/next.png" alt="Left" />
       </div>
       <div class="days-container">
         <div
@@ -46,8 +45,9 @@
       <div
         class="arrow-container"
         :class="selected < searchresults.length - 1 ? '' : 'disabled'"
+        @click.prevent="nextDay"
       >
-        <img src="../assets/next.png" alt="Right" @click.prevent="nextDay" />
+        <img src="../assets/next.png" alt="Right" />
       </div>
     </div>
   </div>
@@ -97,14 +97,15 @@ export default {
 <style lang="scss" scoped>
 .container {
   display: flex;
-  width: 100%;
+  max-width: 100vw;
   height: 10.25rem;
   align-items: flex-end;
+  margin: 0 30px;
+  overflow: hidden;
   .tabs-container {
     display: flex;
     height: 6rem;
     width: 100%;
-    margin: 0 30px;
     justify-content: space-between;
     border-radius: 1px;
     .arrow-container {
