@@ -1,12 +1,12 @@
 import { createStore } from "vuex";
-// import axios from "axios";
-import test from "../assets/test.json";
+import axios from "axios";
+// import test from "../assets/test.json";
 export default createStore({
   state: {
-    search: "istanbul",
+    search: "",
     selectedDay: 0,
-    searchResults: test.daily,
-    hourlyForecast: test.hourly,
+    searchResults: "",
+    hourlyForecast: "",
   },
   mutations: {
     setSearchResults(state, searchResults) {
@@ -25,27 +25,27 @@ export default createStore({
   actions: {
     setSearch({ commit }, search) {
       commit("setSearch", search);
-      // const key = "91a329e45056e46f276886ccfa278897";
-      // axios
-      //   .get(
-      //     `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${key}`
-      //   )
-      //   .then((res) => {
-      //     console.log(res.data.coord);
-      //     var coord = res.data.coord;
-      //     axios
-      //       .get(
-      //         `https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&appid=${key}`
-      //       )
-      //       .then((res) => {
-      //         console.log(res.data);
-      //         commit("setSearchResults", res.data.daily);
-      //         commit("setHourlyForecast", res.data.hourly);
-      //       });
-      //   });
+      const key = "91a329e45056e46f276886ccfa278897";
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${key}`
+        )
+        .then((res) => {
+          console.log(res.data.coord);
+          var coord = res.data.coord;
+          axios
+            .get(
+              `https://api.openweathermap.org/data/2.5/onecall?lat=${coord.lat}&lon=${coord.lon}&appid=${key}`
+            )
+            .then((res) => {
+              console.log(res.data);
+              commit("setSearchResults", res.data.daily);
+              commit("setHourlyForecast", res.data.hourly);
+            });
+        });
       // console.log(test);
-      commit("setSearchResults", test.daily);
-      commit("setHourlyForecast", test.hourly);
+      // commit("setSearchResults", test.daily);
+      // commit("setHourlyForecast", test.hourly);
     },
     setSelectedDay({ commit }, selectedDay) {
       commit("setSelectedDay", selectedDay);

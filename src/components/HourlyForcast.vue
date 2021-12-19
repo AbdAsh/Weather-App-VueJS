@@ -34,7 +34,7 @@
               src="../assets/water.png"
               alt="Weather Icon"
             />
-            <p>{{ result.pop * 100 }}%</p>
+            <p>{{ new Number(result.pop * 100).toFixed(2) }}%</p>
             <div
               class="wind"
               :style="{ transform: `rotate(${result.wind_deg + 45}deg)` }"

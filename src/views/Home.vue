@@ -1,7 +1,7 @@
 <template>
   <Header />
   <div
-    v-if="search"
+    v-if="searchResults"
     class="top-part"
     :style="{
       backgroundImage: `url(https://s7d2.scene7.com/is/image/TWCNews/stars_png`,
@@ -23,6 +23,7 @@
     <!-- <div class="spacer" /> -->
     <HourlyForecast :hourlyForecast="hourlyForecast" />
   </div>
+  <p v-else>No search results to display.</p>
 </template>
 
 <script>
