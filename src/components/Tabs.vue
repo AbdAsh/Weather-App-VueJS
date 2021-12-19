@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="tabs-container">
-      <div class="arrow-container">
+      <div class="arrow-container" :class="selected < 1 ? 'disabled' : ''">
         <img
           class="flipped"
           src="../assets/next.png"
@@ -43,7 +43,10 @@
           </div>
         </div>
       </div>
-      <div class="arrow-container">
+      <div
+        class="arrow-container"
+        :class="selected < searchresults.length - 1 ? '' : 'disabled'"
+      >
         <img src="../assets/next.png" alt="Right" @click.prevent="nextDay" />
       </div>
     </div>
@@ -105,6 +108,10 @@ export default {
     justify-content: space-between;
     border-radius: 1px;
     .arrow-container {
+      &.disabled {
+        background-color: rgba(160, 160, 160, 0.432);
+        cursor: default;
+      }
       width: 2rem;
       height: 100%;
       background-color: rgb(13, 33, 145);

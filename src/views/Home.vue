@@ -9,7 +9,15 @@
   >
     <div class="title">
       <h1>{{ search }}</h1>
-      <span> Add to my favorites</span>
+      <span>
+        <img
+          height="10"
+          width="10"
+          style="filter: invert(1)"
+          src="../assets/plus.png"
+        />
+        Add to my favorites</span
+      >
     </div>
     <Tabs :searchresults="searchResults" :selected="selected" />
     <!-- <div class="spacer" /> -->
