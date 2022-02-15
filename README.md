@@ -1,5 +1,8 @@
-# interview
+# Simple Weather App Using VueJS and OpenWeather API
+---
 
+## Deployed on [Netlify](https://thirsty-dijkstra-f678a4.netlify.app/) <-
+---
 ## Project setup
 ```
 npm install
